@@ -1,21 +1,35 @@
-name: build-shine-forge
+name: Build Forge Mod
+
 on:
-  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v4
-      - run: gradle --version
-      - run: gradle build --no-daemon
-      - uses: actions/upload-artifact@v4
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
         with:
-          name: shine-1.20.1-forge
+          gradle-version: '8.5'
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew || true
+
+      - name: Build with Gradle
+        run: gradle build --no-daemon
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-mod-jar
           path: build/libs/*.jar
