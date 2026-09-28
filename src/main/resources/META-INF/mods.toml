@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/tapeQz/Shine/issues"
+[[mods]]
+modId="shine"
+version="${file.jarVersion}"
+displayName="Shine: VFX Backport"
+authors="tapeQ"
+description='''Backport workspace for Shine visual effects on Minecraft 1.20.1 Forge.'''
+[[dependencies.shine]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.0,48)"
+ordering="NONE"
+side="CLIENT"
+[[dependencies.shine]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="CLIENT"
+
+[[mixins]]
+config="shine.mixins.json"

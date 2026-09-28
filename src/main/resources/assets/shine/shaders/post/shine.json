@@ -1,0 +1,13 @@
+{
+  "targets": ["shine_bloom_a", "shine_bloom_b", "shine_shaded", "shine_rim", "shine_swap"],
+  "passes": [
+    {"name":"shine_bloom_extract","intarget":"minecraft:main","outtarget":"shine_bloom_a"},
+    {"name":"shine_bloom_blur_h","intarget":"shine_bloom_a","outtarget":"shine_bloom_b"},
+    {"name":"shine_bloom_blur_v","intarget":"shine_bloom_b","outtarget":"shine_bloom_a"},
+    {"name":"shine_bloom_composite","intarget":"minecraft:main","outtarget":"shine_swap","auxtargets":[{"name":"BloomSampler","id":"shine_bloom_a","bilinear":true}]},
+    {"name":"shine_shading","intarget":"shine_swap","outtarget":"shine_shaded"},
+    {"name":"shine_atmosphere","intarget":"shine_shaded","outtarget":"shine_rim","auxtargets":[{"name":"MainDepthSampler","id":"minecraft:main:depth","bilinear":false}]},
+    {"name":"shine_rimlight","intarget":"shine_rim","outtarget":"shine_swap","auxtargets":[{"name":"MainDepthSampler","id":"minecraft:main:depth","bilinear":false}]},
+    {"name":"shine_blit","intarget":"shine_swap","outtarget":"minecraft:main"}
+  ]
+}

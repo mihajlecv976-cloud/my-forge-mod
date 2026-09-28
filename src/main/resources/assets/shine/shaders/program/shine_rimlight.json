@@ -1,0 +1,81 @@
+{
+  "vertex": "shine_rimlight",
+  "fragment": "shine_rimlight",
+  "attributes": [
+    "Position"
+  ],
+  "samplers": [
+    {
+      "name": "DiffuseSampler"
+    },
+    {
+      "name": "MainDepthSampler"
+    }
+  ],
+  "uniforms": [
+    {
+      "name": "ProjMat",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Strength",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.48
+      ]
+    },
+    {
+      "name": "Thickness",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1.5
+      ]
+    },
+    {
+      "name": "DepthThreshold",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.012
+      ]
+    },
+    {
+      "name": "MaxDistance",
+      "type": "float",
+      "count": 1,
+      "values": [
+        96
+      ]
+    },
+    {
+      "name": "OutSize",
+      "type": "float",
+      "count": 2,
+      "values": [
+        1,
+        1
+      ]
+    }
+  ]
+}
